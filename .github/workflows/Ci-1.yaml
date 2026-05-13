@@ -16,12 +16,15 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
       - name: Run tests
         run: echo "tests"
 
-      - name: Build Docker Image
-        run: |
-          docker build -t my-app:latest .
+      # - name: Build Docker Image
+      #   run: |
+      #     docker build -t my-app:latest .
 
       - name: Try to print secret
         env:
