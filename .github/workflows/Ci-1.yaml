@@ -7,13 +7,18 @@ on:
 
 jobs:
   test:
+   strategy:
+    matrix:
+      os: [ubuntu, windows, macos]
+      node: [18, 20, 22]
+    runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
 
 
 
@@ -23,15 +28,15 @@ jobs:
       # - name: Install dependencies
       #   run: pip install -r requirements.txt
       
-      - name: Run tests
-        run: echo "tests"
+    - name: Run tests
+      run: echo "tests"
 
-      - name: Build Docker Image
-        run: |
+    - name: Build Docker Image
+      run: |
           docker build -t my-app:latest .
 
-      - name: Try to print secret
-        env:
+    - name: Try to print secret
+      env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: |
+      run: |
           echo "The secret is: $MY_SECRET"
