@@ -13,12 +13,14 @@ def home():
 
 
 
-
     return f"""
     <h1>👋 Hello from GitHub Actions + Docker! GUR SEMINARY</h1>
     <p>Version: {os.getenv('VERSION', '1.0.0')}</p>
     <p>Built at: {os.getenv('BUILD_TIME', 'unknown')}</p>
     """
+
+
+
 
 
 if __name__ == "__main__":
